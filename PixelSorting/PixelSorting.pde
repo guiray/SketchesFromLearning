@@ -1,36 +1,40 @@
+// tutorial: https://youtu.be/JUDYkxU6J0o
+
 PImage img;
 PImage sorted;
 
+
 void setup() {
   size(1200,600);
-  img = loadImage("myimage"+".jpg");
-  sorted = createImage(img.width, img.height, RGB);
-  //img.loadPixels();
-  //for (int i = 0; i < sorted.pixels.length; i++) {
-  //  sorted.pixels[i] = img.pixels[i];
-  //}
+  
+  img = loadImage("myimage"+"."+"jpg");
   sorted = img.get();
+  //sorted = createImage(img.width, img.height, RGB);
   sorted.loadPixels();
-
   
   // Selection sort:
   for (int i = 0; i < sorted.pixels.length; i++) {
-    for (int j = 0; j < sorted.pixels.length; j++) {
+    float record = -1;
+    int selectedPixel = i;
+    
+    for (int j = i; j < sorted.pixels.length; j++) {
       color pix = sorted.pixels[j];
       float b = brightness(pix);
+      if (b > record) {
+        selectedPixel = j;
+        record = b;
+      }
+      
     }
+    
+    // Swap selectedPixel with i
+    color temp = sorted.pixels[i];
+    sorted.pixels[i] = sorted.pixels[selectedPixel];
+    sorted.pixels[selectedPixel] = temp;
+    
   }
-  
-  
-  for (int j = 0; j < sorted.pixels.length; j++) {
-    color pix = sorted.pixels[j];
-    float b = brightness(pix);
-  }
-  
   
   sorted.updatePixels();
-  
-  
   
 }
 
