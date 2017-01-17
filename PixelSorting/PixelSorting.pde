@@ -1,4 +1,4 @@
-// tutorial: https://youtu.be/JUDYkxU6J0o
+// inspired by tutorial by Daniel Shiffman: https://youtu.be/JUDYkxU6J0o
 
 PImage img;
 PImage sorted;
@@ -9,7 +9,6 @@ void setup() {
   
   img = loadImage("myimage"+"."+"jpg");
   sorted = img.get();
-  //sorted = createImage(img.width, img.height, RGB);
   sorted.loadPixels();
   
   // Selection sort:
@@ -19,7 +18,7 @@ void setup() {
     
     for (int j = i; j < sorted.pixels.length; j++) {
       color pix = sorted.pixels[j];
-      float b = brightness(pix);
+      float b = hue(pix);
       if (b > record) {
         selectedPixel = j;
         record = b;
