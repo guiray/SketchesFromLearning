@@ -1,3 +1,5 @@
+// inspired by http://www.synthestruct.com/spirometry/
+
 //SMALL AND BIG CIRCLE RADIUS
 float radiusSmallCircle = 200;
 float radiusBigCircle = 350;
